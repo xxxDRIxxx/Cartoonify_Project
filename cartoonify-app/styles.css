@@ -1,7 +1,8 @@
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Animated Gradient Background */
+/* Animated Colorful Gradient Background (anime sky style) */
 .stApp {
   margin: 0;
   font-family: "Inter", "Poppins", sans-serif;
@@ -16,34 +17,36 @@
   z-index: 0;
 }
 
-/* Gradient Animation */
+/* Gradient animation */
 @keyframes animeGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Extra background effects: sparkles + light rays */
+/* Sparkles layer behind content */
 .stApp::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background-image:
-    radial-gradient(3px 3px at 20% 30%, rgba(255,255,255,0.9) 60%, transparent 100%),
-    radial-gradient(4px 4px at 80% 60%, rgba(255,255,255,0.8) 60%, transparent 100%),
-    radial-gradient(3px 3px at 50% 80%, rgba(255,255,255,0.7) 60%, transparent 100%),
-    radial-gradient(4px 4px at 70% 20%, rgba(255,255,255,0.9) 60%, transparent 100%);
+    radial-gradient(3px 3px at 10% 20%, rgba(255,255,255,0.9) 60%, transparent 100%),
+    radial-gradient(4px 4px at 70% 10%, rgba(255,255,255,0.8) 60%, transparent 100%),
+    radial-gradient(3px 3px at 40% 70%, rgba(255,255,255,0.7) 60%, transparent 100%),
+    radial-gradient(4px 4px at 85% 60%, rgba(255,255,255,0.9) 60%, transparent 100%),
+    radial-gradient(2px 2px at 25% 85%, rgba(255,255,255,0.6) 60%, transparent 100%);
   background-repeat: repeat;
-  animation: sparkleFloat 18s linear infinite;
+  animation: sparkleFloat 20s linear infinite;
   z-index: -2;
+  opacity: 0.9;
 }
 
 @keyframes sparkleFloat {
   from { transform: translateY(0); }
-  to { transform: translateY(-200px); }
+  to { transform: translateY(-160px); }
 }
 
-/* Light rays */
+/* Rotating soft rays for more depth */
 .stApp::after {
   content: "";
   position: absolute;
@@ -53,13 +56,14 @@
   height: 200%;
   background: repeating-linear-gradient(
     45deg,
-    rgba(255,255,255,0.05),
-    rgba(255,255,255,0.05) 20px,
-    transparent 20px,
-    transparent 40px
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 24px,
+    transparent 24px,
+    transparent 48px
   );
   animation: raysMove 60s linear infinite;
   z-index: -3;
+  mix-blend-mode: overlay;
 }
 
 @keyframes raysMove {
@@ -71,128 +75,150 @@
 .block-container {
   padding-top: 2rem !important;
   padding-bottom: 2rem !important;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* Anime Title */
+/* Title - anime logo style */
 .title {
   font-family: "Bangers", "Fredoka One", cursive;
   font-size: 3.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   color: #fff;
   position: relative;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  text-shadow: 
-    -3px -3px 0px #ff6b6b,
-     3px -3px 0px #4ecdc4,
-    -3px  3px 0px #ffd166,
-     3px  3px 0px #9ad5ff,
-     0px   0px 15px rgba(255,255,255,0.8);
+  letter-spacing: 1.5px;
+  text-shadow:
+    -4px -4px 0px #ff6b6b,
+     4px -4px 0px #4ecdc4,
+    -4px  4px 0px #ffd166,
+     4px  4px 0px #9ad5ff,
+     0px   0px 20px rgba(255,255,255,0.9);
   animation: titleShimmer 4s linear infinite;
 }
 
-/* Shimmer effect across title */
+/* Shimmering outline animation for title */
 @keyframes titleShimmer {
-  0% { text-shadow: -3px -3px 0px #ff6b6b, 3px -3px 0px #4ecdc4, -3px 3px 0px #ffd166, 3px 3px 0px #9ad5ff, 0 0 10px rgba(255,255,255,0.6); }
-  50% { text-shadow: -3px -3px 0px #9ad5ff, 3px -3px 0px #ffd166, -3px 3px 0px #ff6b6b, 3px 3px 0px #4ecdc4, 0 0 20px rgba(255,255,255,1); }
-  100% { text-shadow: -3px -3px 0px #ff6b6b, 3px -3px 0px #4ecdc4, -3px 3px 0px #ffd166, 3px 3px 0px #9ad5ff, 0 0 10px rgba(255,255,255,0.6); }
+  0% {
+    text-shadow: -4px -4px 0px #ff6b6b, 4px -4px 0px #4ecdc4, -4px 4px 0px #ffd166, 4px 4px 0px #9ad5ff, 0 0 10px rgba(255,255,255,0.6);
+  }
+  50% {
+    text-shadow: -4px -4px 0px #9ad5ff, 4px -4px 0px #ffd166, -4px 4px 0px #ff6b6b, 4px 4px 0px #4ecdc4, 0 0 30px rgba(255,255,255,1);
+  }
+  100% {
+    text-shadow: -4px -4px 0px #ff6b6b, 4px -4px 0px #4ecdc4, -4px 4px 0px #ffd166, 4px 4px 0px #9ad5ff, 0 0 10px rgba(255,255,255,0.6);
+  }
 }
 
-/* Cartoon-like Cards */
+/* Cards (cartoon panel look) */
 .upload-card, .camera-card {
   background: rgba(255, 255, 255, 0.25);
   border: 4px solid #fff;
-  border-radius: 30px;
-  padding: 2rem;
-  margin: 1.5rem auto;
-  width: 85%;
-  max-width: 520px;
-  box-shadow: 6px 6px 0px #333, 0px 0px 20px rgba(0,0,0,0.2);
+  border-radius: 28px;
+  padding: 1.8rem;
+  margin: 1.25rem auto;
+  width: 86%;
+  max-width: 560px;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.45), 0px 12px 30px rgba(0,0,0,0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: bounceIn 1.2s ease;
+  animation: bounceIn 1s ease;
+  position: relative;
 }
 
+/* Hover bounce */
 .upload-card:hover, .camera-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 10px 10px 0px #222, 0px 0px 25px rgba(0,0,0,0.3);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 12px 12px 0px rgba(0,0,0,0.5), 0px 20px 40px rgba(0,0,0,0.18);
 }
 
+/* Bounce entry */
 @keyframes bounceIn {
-  0% { transform: translateY(50px); opacity: 0; }
-  60% { transform: translateY(-10px); opacity: 1; }
+  0% { transform: translateY(40px); opacity: 0; }
+  60% { transform: translateY(-8px); opacity: 1; }
   100% { transform: translateY(0); }
 }
 
-/* File Uploader (comic style) */
+/* File Uploader (comic style inside card) */
 .upload-card [data-testid="stFileUploader"] {
   margin-top: 1rem;
   width: 100%;
   background: #fff;
   border: 3px dashed #ff6b6b;
-  border-radius: 20px;
-  padding: 1.5rem;
-  transition: all 0.3s ease-in-out;
+  border-radius: 18px;
+  padding: 1.25rem;
+  transition: all 0.25s ease-in-out;
   color: #333;
+  box-shadow: 0 6px 18px rgba(255,255,255,0.35) inset;
 }
 
 .upload-card [data-testid="stFileUploader"]:hover {
   border-color: #4ecdc4;
-  background: #fefefe;
-  box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+  background: #fffefc;
+  box-shadow: 0 0 18px rgba(78, 205, 196, 0.45);
 }
 
 .upload-card [data-testid="stFileUploader"] label div {
   color: #333 !important;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Cartoon Buttons */
+/* Cartoon Buttons (rounded, poppy) */
 .stButton > button {
   margin: 0.5rem auto;
-  padding: 1rem 2rem;
+  padding: 0.9rem 1.8rem;
   border: 3px solid #fff;
-  border-radius: 20px;
+  border-radius: 18px;
   cursor: pointer;
   background: #ff6b6b;
   color: #fff;
   font-family: "Fredoka One", cursive;
-  font-size: 1.2rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.08rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   display: inline-block;
-  box-shadow: 4px 4px 0px #222;
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.6);
 }
 
+/* Button hover */
 .stButton > button:hover {
-  transform: translateY(-4px) scale(1.05);
+  transform: translateY(-6px) scale(1.06);
   background: #ff4757;
-  box-shadow: 6px 6px 0px #111;
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.7);
 }
 
-/* Center camera button */
+/* *** Robust centering overrides for camera button (force-center) *** */
+/* Targets common streamlit DOM variations; uses !important to override default rules */
+.camera-card, .camera-card * {
+  text-align: center; /* fallback */
+}
+
 .camera-card .stButton {
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  padding: 0 !important;
 }
 
-.camera-card .stButton > button {
-  margin: 0 auto; /* extra safety */
-  min-width: 200px; /* optional: make it wider */
+.camera-card .stButton > button,
+.camera-card .stButton button,
+.camera-card .stButton div[role="button"] {
+  margin: 0 !important;
+  min-width: 220px !important;
+  display: inline-block !important;
+  text-align: center !important;
 }
-
 
 /* Image preview (comic panel style) */
 .preview {
   margin-top: 1rem;
-  max-width: 320px;
-  border-radius: 20px;
+  max-width: 360px;
+  border-radius: 18px;
   border: 4px solid #fff;
   box-shadow: 6px 6px 0px #333;
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Animations */
+/* Fade-in animation */
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
