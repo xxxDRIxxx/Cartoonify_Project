@@ -1,27 +1,27 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fredoka+One&display=swap');
 
-/* Animated Gradient Background */
+/* Animated Colorful Gradient Background (anime sky style) */
 .stApp {
   margin: 0;
   font-family: "Inter", "Poppins", sans-serif;
-  background: linear-gradient(270deg, #667eea, #764ba2, #a855f7, #3b82f6);
-  background-size: 800% 800%;
-  animation: gradientShift 20s ease infinite;
-  color: white;
+  background: linear-gradient(270deg, #ff9ecd, #ffd166, #9ad5ff, #b28dff);
+  background-size: 600% 600%;
+  animation: animeGradient 25s ease infinite;
+  color: #fff;
   text-align: center;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Background Animation */
-@keyframes gradientShift {
+/* Fun background animation */
+@keyframes animeGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Remove default Streamlit padding for cleaner look */
+/* Remove default Streamlit padding */
 .block-container {
   padding-top: 2rem !important;
   padding-bottom: 2rem !important;
@@ -29,86 +29,93 @@
   margin: 0 auto;
 }
 
-/* Container */
-.app-container {
-  padding: 2rem;
-  animation: fadeIn 1s ease-in-out;
-}
-
 /* Title */
 .title {
-  font-size: 2.8rem;
+  font-family: "Fredoka One", cursive;
+  font-size: 3rem;
   margin-bottom: 2rem;
-  text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
-  animation: fadeInDown 1s ease-in-out;
+  color: #fff;
+  text-shadow: 3px 3px 0px #ff6b6b, -3px -3px 0px #4ecdc4;
+  animation: popIn 1s ease;
 }
 
-/* Glassy Cards */
+/* Pop animation for title */
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Cartoon-like Cards */
 .upload-card, .camera-card {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(25px) saturate(160%);
-  -webkit-backdrop-filter: blur(25px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
+  border: 4px solid #fff;
+  border-radius: 30px;
   padding: 2rem;
   margin: 1.5rem auto;
-  border-radius: 22px;
-  width: 80%;
+  width: 85%;
   max-width: 520px;
-  box-shadow: 0px 10px 30px rgba(0,0,0,0.25);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  animation: fadeInUp 1s ease-in-out;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  box-shadow: 6px 6px 0px #333, 0px 0px 20px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: bounceIn 1.2s ease;
 }
 
-/* 3D Tilt on hover */
+/* Bouncy effect on hover */
 .upload-card:hover, .camera-card:hover {
-  transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) scale(1.02);
-  box-shadow: 0px 16px 40px rgba(0,0,0,0.35);
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 10px 10px 0px #222, 0px 0px 25px rgba(0,0,0,0.3);
 }
 
-/* File Uploader (modern glassy look inside card) */
+/* Cartoon bounce animation */
+@keyframes bounceIn {
+  0% { transform: translateY(50px); opacity: 0; }
+  60% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(0); }
+}
+
+/* File Uploader (comic style inside card) */
 .upload-card [data-testid="stFileUploader"] {
   margin-top: 1rem;
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px dashed rgba(255, 255, 255, 0.4);
-  border-radius: 18px;
+  background: #fff;
+  border: 3px dashed #ff6b6b;
+  border-radius: 20px;
   padding: 1.5rem;
   transition: all 0.3s ease-in-out;
+  color: #333;
 }
 
 .upload-card [data-testid="stFileUploader"]:hover {
-  border-color: #a5b4fc;
-  background: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 0 15px rgba(165, 180, 252, 0.5);
+  border-color: #4ecdc4;
+  background: #fefefe;
+  box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
 }
 
 .upload-card [data-testid="stFileUploader"] label div {
-  color: white !important;
-  font-weight: 500;
+  color: #333 !important;
+  font-weight: 600;
 }
 
-/* Buttons (glassy gradient style) */
+/* Cartoon Buttons */
 .stButton > button {
   margin: 0.5rem auto;
   padding: 1rem 2rem;
-  border: none;
-  border-radius: 14px;
+  border: 3px solid #fff;
+  border-radius: 20px;
   cursor: pointer;
-  background: linear-gradient(135deg, #6366f1, #3b82f6);
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #ff6b6b;
+  color: #fff;
+  font-family: "Fredoka One", cursive;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: inline-block;
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+  box-shadow: 4px 4px 0px #222;
 }
 
 .stButton > button:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0px 10px 25px rgba(99, 102, 241, 0.6);
+  background: #ff4757;
+  box-shadow: 6px 6px 0px #111;
 }
 
 /* Center camera button */
@@ -117,26 +124,18 @@
   justify-content: center;
 }
 
-/* Image preview */
+/* Image preview (comic panel style) */
 .preview {
   margin-top: 1rem;
   max-width: 320px;
-  border-radius: 16px;
-  box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  border: 4px solid #fff;
+  box-shadow: 6px 6px 0px #333;
   animation: fadeIn 1s ease-in-out;
-  border: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 /* Animations */
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
-}
-@keyframes fadeInDown {
-  from {opacity: 0; transform: translateY(-20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-@keyframes fadeInUp {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
 }
