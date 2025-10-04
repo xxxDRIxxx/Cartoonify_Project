@@ -14,7 +14,7 @@ local_css("styles.css")
 
 # --- App Layout ---
 st.markdown("<div class='app-container'>", unsafe_allow_html=True)
-st.markdown("<h1 class='title'>🎨 Cartoonify Your Image</h1>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>Cartoonify Your Image</h1>", unsafe_allow_html=True)
 
 # Upload Card with uploader INSIDE
 with st.container():
@@ -25,12 +25,12 @@ with st.container():
 if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_column_width=True, output_format="PNG")
-    st.success("✅ Image uploaded successfully!")
+    st.success("Image uploaded successfully!")
 
 # Camera Card with button INSIDE
 with st.container():
     st.markdown("<div class='camera-card'><h2>Use Camera</h2>", unsafe_allow_html=True)
-    if st.button("📸 Open Camera"):
+    if st.button("Open Camera"):
         st.info("Camera integration is not yet implemented in this demo.")
     st.markdown("</div>", unsafe_allow_html=True)
 
