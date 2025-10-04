@@ -1,15 +1,24 @@
 /* Import Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-/* Streamlit App Background */
+/* Streamlit App Animated Background */
 .stApp {
   margin: 0;
   font-family: "Inter", "Poppins", sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(270deg, #667eea, #764ba2, #a855f7, #3b82f6);
+  background-size: 800% 800%;
+  animation: gradientShift 20s ease infinite;
   color: white;
   text-align: center;
   overflow-x: hidden;
   min-height: 100vh; /* full screen gradient */
+}
+
+/* Background Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Remove default Streamlit padding for cleaner look */
@@ -34,31 +43,29 @@
   animation: fadeInDown 1s ease-in-out;
 }
 
-/* Fix uploader inside glass card */
+/* Cards */
+.upload-card, .camera-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  padding: 1.8rem;
+  margin: 1.5rem auto;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0px 8px 24px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.upload-card:hover, .camera-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 12px 32px rgba(0,0,0,0.35);
+}
+
+/* File Uploader (modern glassy look) */
 .upload-card [data-testid="stFileUploader"] {
   margin-top: 1rem;
   width: 100%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px dashed rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-  padding: 1.2rem;
-  transition: all 0.3s ease-in-out;
-}
-
-.upload-card [data-testid="stFileUploader"]:hover {
-  border-color: #a5b4fc;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* Make camera button fit nicely inside its card */
-.camera-card .stButton > button {
-  margin-top: 1rem;
-  width: 100%;
-}
-
-
-/* File Uploader (modern glassy look) */
-[data-testid="stFileUploader"] {
   background: rgba(255, 255, 255, 0.08);
   border: 2px dashed rgba(255, 255, 255, 0.4);
   border-radius: 16px;
@@ -68,19 +75,19 @@
   transition: all 0.3s ease-in-out;
 }
 
-[data-testid="stFileUploader"]:hover {
+.upload-card [data-testid="stFileUploader"]:hover {
   border-color: #a5b4fc;
   background: rgba(255, 255, 255, 0.15);
 }
 
-[data-testid="stFileUploader"] label div {
+.upload-card [data-testid="stFileUploader"] label div {
   color: white !important;
   font-weight: 500;
 }
 
-/* Buttons (Streamlit renders them inside divs) */
+/* Buttons */
 .stButton > button {
-  margin: 0.5rem;
+  margin: 0.5rem auto;
   padding: 0.9rem 1.6rem;
   border: none;
   border-radius: 14px;
@@ -90,11 +97,18 @@
   font-size: 1.1rem;
   font-weight: 600;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
 }
 
 .stButton > button:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0px 8px 20px rgba(99, 102, 241, 0.35);
+}
+
+/* Center camera button inside its card */
+.camera-card .stButton {
+  display: flex;
+  justify-content: center;
 }
 
 /* Image preview */
