@@ -176,6 +176,12 @@
   justify-content: center;
 }
 
+.camera-card .stButton > button {
+  margin: 0 auto; /* extra safety */
+  min-width: 200px; /* optional: make it wider */
+}
+
+
 /* Image preview (comic panel style) */
 .preview {
   margin-top: 1rem;
