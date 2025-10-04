@@ -16,22 +16,28 @@ local_css("styles.css")
 st.markdown("<div class='app-container'>", unsafe_allow_html=True)
 st.markdown("<h1 class='title'>Cartoonify Your Image</h1>", unsafe_allow_html=True)
 
-# Upload Card with uploader INSIDE
+# Upload Card
 with st.container():
     st.markdown("<div class='upload-card'><h2>Upload an Image</h2>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader("", type=["jpg", "jpeg", "png"], label_visibility="collapsed")
     st.markdown("</div>", unsafe_allow_html=True)
 
+# Show uploaded image
 if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_column_width=True, output_format="PNG")
     st.success("Image uploaded successfully!")
 
-# Camera Card with button INSIDE
+# Camera Card
 with st.container():
     st.markdown("<div class='camera-card'><h2>Use Camera</h2>", unsafe_allow_html=True)
-    if st.button("Open Camera"):
-        st.info("Camera integration is not yet implemented in this demo.")
+
+    # ✅ Center the button using Streamlit columns
+    col1, col2, col3 = st.columns([1,2,1])  # middle wider
+    with col2:
+        if st.button("Open Camera"):
+            st.info("Camera integration is not yet implemented in this demo.")
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 st.markdown("</div>", unsafe_allow_html=True)
