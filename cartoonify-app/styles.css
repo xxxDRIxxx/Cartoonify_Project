@@ -12,6 +12,8 @@
   text-align: center;
   overflow-x: hidden;
   min-height: 100vh;
+  position: relative; /* allow sparkles */
+  z-index: 0;
 }
 
 /* Fun background animation */
@@ -19,6 +21,27 @@
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Sparkle Layer */
+.stApp::before, .stApp::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.9) 50%, transparent 100%),
+    radial-gradient(3px 3px at 70% 80%, rgba(255,255,255,0.8) 50%, transparent 100%),
+    radial-gradient(2px 2px at 40% 60%, rgba(255,255,255,0.7) 50%, transparent 100%),
+    radial-gradient(3px 3px at 80% 20%, rgba(255,255,255,0.85) 50%, transparent 100%),
+    radial-gradient(2px 2px at 10% 75%, rgba(255,255,255,0.6) 50%, transparent 100%);
+  background-repeat: repeat;
+  animation: sparkleFloat 20s linear infinite;
+  z-index: -1; /* behind content */
+}
+
+@keyframes sparkleFloat {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
 }
 
 /* Remove default Streamlit padding */
@@ -39,7 +62,6 @@
   animation: popIn 1s ease;
 }
 
-/* Pop animation for title */
 @keyframes popIn {
   0% { transform: scale(0.8); opacity: 0; }
   60% { transform: scale(1.1); opacity: 1; }
@@ -60,20 +82,18 @@
   animation: bounceIn 1.2s ease;
 }
 
-/* Bouncy effect on hover */
 .upload-card:hover, .camera-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 10px 10px 0px #222, 0px 0px 25px rgba(0,0,0,0.3);
 }
 
-/* Cartoon bounce animation */
 @keyframes bounceIn {
   0% { transform: translateY(50px); opacity: 0; }
   60% { transform: translateY(-10px); opacity: 1; }
   100% { transform: translateY(0); }
 }
 
-/* File Uploader (comic style inside card) */
+/* File Uploader (comic style) */
 .upload-card [data-testid="stFileUploader"] {
   margin-top: 1rem;
   width: 100%;
