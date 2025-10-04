@@ -3,25 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cartoonify App</title>
+  <title>🎨 Cartoonify App</title>
+  <!-- Make sure styles.css is in the same folder as this HTML -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="app-container">
-    <h1 class="title">Cartoonify Your Image</h1>
+    <!-- Title -->
+    <h1 class="title">🎨 Cartoonify Your Image</h1>
 
+    <!-- Upload Card -->
     <div class="upload-card">
       <h2>Upload an Image</h2>
-      <input type="file" accept="image/*">
-      <div class="preview">
-        <!-- Uploaded image preview will go here -->
-      </div>
+      <input type="file" accept="image/*" id="fileInput">
+      <br>
+      <!-- Image preview will use .preview styling -->
+      <img id="previewImage" class="preview" src="" alt="Preview" style="display:none;">
     </div>
 
+    <!-- Camera Card -->
     <div class="camera-card">
       <h2>Use Camera</h2>
-      <button>Open Camera</button>
+      <button id="cameraButton">📸 Open Camera</button>
     </div>
   </div>
+
+  <!-- Minimal inline JS just for showing uploaded preview -->
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const previewImage = document.getElementById('previewImage');
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          previewImage.src = event.target.result;
+          previewImage.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
