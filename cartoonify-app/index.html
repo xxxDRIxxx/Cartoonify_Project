@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cartoonify App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartoonify App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <h1 class="title">Cartoonify Your Image</h1>
+
+    <div class="upload-card">
+      <h2>Upload an Image</h2>
+      <input type="file" accept="image/*">
+      <div class="preview">
+        <!-- Uploaded image preview will go here -->
+      </div>
+    </div>
+
+    <div class="camera-card">
+      <h2>Use Camera</h2>
+      <button>Open Camera</button>
+    </div>
+  </div>
+</body>
 </html>
