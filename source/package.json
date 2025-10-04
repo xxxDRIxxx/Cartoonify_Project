@@ -2,7 +2,7 @@
   "name": "cartoonify-web",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://<your-username>.github.io/source/public/index.html",
+  "homepage": "https://github.com/xxxDRIxxx/Cartoonify_Project/blob/main/source/public/index.html",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
